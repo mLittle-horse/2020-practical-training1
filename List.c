@@ -31,7 +31,7 @@ void Display(){
 		p=p->next;
 	}
 	printf("\n");
-	printf("请按回车键返回!");
+	printf("请按回车键继续!");
 	getchar();
 }
 
@@ -90,7 +90,42 @@ void DeleteRecord(){
 			scanf("%s",name);
 		}
 	}
-	printf("请按回车返回!");
+	printf("请按回车继续!");
 	getchar();
 	getchar();
 }
+
+void InputRecord(){
+	PNode p, q;
+	while(1){
+		p = (PNode)malloc(LEN);
+		printf("输入姓名，登录时间：");
+		char message[LENGTH << 1], name[LENGTH];
+		scanf("%s", message);
+		int index = 0;
+		for (int i = 0; i < strlen(message);i++){
+			if(message[i]==',')
+				break;
+			name[index++] = message[i];
+		}
+		name[index] = '\0';
+		strcpy(p->data.name, name);
+		p->data.totalCount = 1;
+		InsertLinkEnd(p);
+		printf(">>>>>>>>>>提示：新的结点已经添加完毕，是否要继续添加？[y/n]");
+		char ch;
+		scanf(" %c", &ch);
+		switch(ch){
+			case 'y':
+			case 'Y':
+				break;
+			default:
+				return;
+		}
+	}
+	printf("请按回车键继续!");
+	getchar();
+	getchar();
+}
+
+

@@ -63,7 +63,7 @@ void ReadFromFile(){
 
 增加并测试了Display功能，输出链表。
 
-<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217140127066.png" alt="image-20210217140127066" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217145914.png" alt="image-20210217140127066" style="zoom:67%;" />
 
 
 
@@ -73,7 +73,7 @@ void ReadFromFile(){
 
 DeleteRecord()里面设计了找到结点后可以选择删或不删。
 
-<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/image-20210217144404403.png" alt="image-20210217144404403" style="zoom:67%;" />![](https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/image-20210217144404403.png)
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/image-20210217144404403.png" alt="image-20210217144404403" style="zoom:67%;" />
 
 ```c
 //DeleteRecord function
@@ -120,6 +120,48 @@ void DeleteRecord(){
 		}
 	}
 	printf("请按回车返回!");
+	getchar();
+	getchar();
+}
+```
+
+
+
+#### 2021-2-17	15:13:55		update List.c--add InputRecord function
+
+加入了添加结点的功能并测试。
+
+```c
+//InputRecord function	
+void InputRecord(){
+	PNode p, q;
+	while(1){
+		p = (PNode)malloc(LEN);
+		printf("输入姓名，登录时间：");
+		char message[LENGTH << 1], name[LENGTH];
+		scanf("%s", message);
+		int index = 0;
+		for (int i = 0; i < strlen(message);i++){
+			if(message[i]==',')
+				break;
+			name[index++] = message[i];
+		}
+		name[index] = '\0';
+		strcpy(p->data.name, name);
+		p->data.totalCount = 1;
+		InsertLinkEnd(p);
+		printf(">>>>>>>>>>提示：新的结点已经添加完毕，是否要继续添加？[y/n]");
+		char ch;
+		scanf(" %c", &ch);
+		switch(ch){
+			case 'y':
+			case 'Y':
+				break;
+			default:
+				return;
+		}
+	}
+	printf("请按回车键继续!");
 	getchar();
 	getchar();
 }

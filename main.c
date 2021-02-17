@@ -8,5 +8,7 @@ int main(){
 	Display();
 	DeleteRecord();
 	Display();
+	InputRecord();
+	Display();
 	return 0;
 }
