@@ -45,7 +45,6 @@ void DeleteNode(PNode p,PNode pre){
 			tail = pre;
 	}
 	free(p);
-	printf("该登录信息删除成功！\n");
 }
 
 void DeleteRecord(){
@@ -140,4 +139,25 @@ void Destroy(){
 	head = tail = NULL;
 }
 
-
+void MergeListNode(){
+	PNode p = head;
+	while(p){
+		PNode now = p->next, pre = p;
+		int cnt=1;
+		while(now){
+			if(!strcmp(now->data.name,p->data.name)){
+				cnt++;
+				DeleteNode(now, pre);
+				now = pre->next;
+			}
+			else{
+				now = now->next, pre = pre->next;
+			}
+		}
+		p->data.totalCount = cnt;
+		p = p->next;
+	}
+	printf("结点合并完成！\n");
+	printf("按回车继续！\n");
+	getchar();
+}

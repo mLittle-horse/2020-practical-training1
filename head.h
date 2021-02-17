@@ -23,5 +23,6 @@ void DeleteNode(PNode p,PNode pre);  //删除指定结点
 void DeleteRecord();  //删除某条记录
 void InputRecord();  //增加某条记录
 void Destroy();  //摧毁链表
+void MergeListNode();   //合并相同姓名的结点
 
 #endif

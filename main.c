@@ -6,11 +6,13 @@
 int main(){
 	ReadFromFile();
 	Display();
-	DeleteRecord();
-	Display();
-	InputRecord();
-	Display();
-	Destroy();
+	// DeleteRecord();
+	// Display();
+	// InputRecord();
+	// Display();
+	// Destroy();
+	// Display();
+	MergeListNode();
 	Display();
 	return 0;
 }

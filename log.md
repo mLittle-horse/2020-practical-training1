@@ -194,3 +194,20 @@ void InputRecord(){
 ##### 测试结果
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217170026.png" alt="image-20210217165957730" style="zoom:67%;" />
+
+
+
+#### 2021-2-17	17:17:52		update List.c--add MergeListNode function
+
+增加了合并结点功能，数能够将用户名相同的节点合并，并在合并过程中将登录次数累加
+
+##### 代码截图
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217172009.png" alt="image-20210217172008128" style="zoom:67%;" />
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217172131.png" alt="image-20210217172127857" style="zoom:67%;" />
+
+
+
