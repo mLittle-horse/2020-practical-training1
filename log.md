@@ -211,3 +211,85 @@ void InputRecord(){
 
 
 
+#### 2021-2-17	19:48:22		new filewrite.c
+
+增加了将单链表中的节点输出到文件 result.txt 中功能
+
+##### 代码截图
+
+![image-20210217195020067](https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217195022.png)
+
+##### 测试结果
+
+<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217195221148.png" alt="image-20210217195221148" style="zoom:67%;" />
+
+
+
+#### 2021-2-17	19:55:37		whole
+
+依次执行读入文件、创建链表、合并链表节点和输出文件的功能。
+
+##### 测试代码
+
+```c
+int main(){
+	ReadFromFile();
+	Display();
+	// DeleteRecord();
+	// Display();
+	// InputRecord();
+	// Display();
+	// Destroy();
+	// Display();
+	MergeListNode();
+	Display();
+	WriteToFile();
+	return 0;
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217195733.png" alt="image-20210217195731627" style="zoom:67%;" />
+
+
+
+#### 2021-2-17	20:27:09		new BubbleSort.c 
+
+##### 代码
+
+```c
+//冒泡排序
+void BubbleSort(){
+	PNode p,end;
+	end=NULL;
+	while(end!=head){
+		p=head;
+		while(p->next!=end){
+			if(p->data.totalCount<p->next->data.totalCount){
+				//交换 totalCount 的值 
+				int tem=p->data.totalCount;
+				p->data.totalCount=p->next->data.totalCount;
+				p->next->data.totalCount=tem;
+				//交换name 
+				char name[LENGTH];
+				strcpy(name,p->data.name);
+				strcpy(p->data.name,p->next->data.name);
+				strcpy(p->next->data.name,name);
+			}
+			p=p->next;
+		}
+		end=p;
+	}
+	printf("冒泡排序完成！\n");
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217202842.png" alt="image-20210217202840716" style="zoom:67%;" />
+

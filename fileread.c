@@ -6,10 +6,10 @@
 
 void ReadFromFile(){
 	FILE *fp;
-	fp = fopen("C:\\in.txt", "r");
+	fp = fopen("C:\\mxp\\GitHub_repo\\2020-practical-training1\\in.txt","r");
 	if(fp==NULL){
 		printf("提示：文件不存在！无法录入信息\n");
-		printf("请按回车键回到主菜单.");
+		printf("请按回车键返回.");
 		getchar();getchar();
 		return ;
 	}
@@ -30,4 +30,8 @@ void ReadFromFile(){
 		p->data.totalCount = 1;
 		InsertLinkEnd(p);
 	}
+	fclose(fp);
+	printf("信息读取成功！\n");
+	printf("按回车继续！\n");
+	getchar();
 }

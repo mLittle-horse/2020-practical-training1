@@ -14,5 +14,8 @@ int main(){
 	// Display();
 	MergeListNode();
 	Display();
+//	WriteToFile();
+	BubbleSort();
+	Display();
 	return 0;
 }

@@ -24,5 +24,10 @@ void DeleteRecord();  //删除某条记录
 void InputRecord();  //增加某条记录
 void Destroy();  //摧毁链表
 void MergeListNode();   //合并相同姓名的结点
+void WriteToFile();  //将单链表中的节点输出到文件 result.txt 中
+
+////////////////////////////////排序/////////////////////////////
+void BubbleSort();  //冒泡排序
+
 
 #endif
