@@ -18,7 +18,8 @@ int main(){
 
 /////////排序//////////
 //	BubbleSort();
-	QuickSort();
+//	QuickSort();
+	HeapSort();
 	Display();
 	return 0;
 }

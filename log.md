@@ -326,3 +326,66 @@ void QuickSort(){
 
 <img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217211949158.png" alt="image-20210217211949158" style="zoom:67%;" />
 
+
+
+#### 2021-2-17	21:41:53		new HeapSort.c
+
+这里要求从大到小排，即建立大顶堆。
+
+其中void insert(PNode p)用来向大顶堆中插入节点，PNode del()用来删除堆顶元素并返回。
+
+##### 代码
+
+```c
+//堆排序（大顶堆）
+PNode heap[100005];
+int heap_size = 0;
+
+void HeapSort(){
+	PNode p = head;
+	while(p){
+		insert(p);
+		p = p->next;
+	}
+	head = tail = NULL;
+	while(heap_size){
+		InsertLinkEnd(del());
+	}
+	printf("堆排序完成！\n");
+}
+
+void insert(PNode p){
+	heap[++heap_size] = p;
+	int now, nex;
+	now = heap_size;
+	while(now>1){
+		nex = now >> 1;
+		if(heap[nex]->data.totalCount>=heap[now]->data.totalCount)
+			return;
+		swap(heap[nex], heap[now]);
+		now = nex;
+	}
+}
+
+PNode del(){
+	PNode ans = heap[1];
+	heap[1] = heap[heap_size--];
+	int now, nex;
+	now = 1;
+	while(now<=heap_size/2){
+		nex = now << 1;
+		if(nex+1<=heap_size&&heap[nex]->data.totalCount<heap[nex+1]->data.totalCount)
+			nex++;
+		swap(heap[now], heap[nex]);
+		now = nex;
+	}
+	return ans;
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217214942.png" alt="image-20210217214939935" style="zoom:67%;" />
+

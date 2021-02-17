@@ -27,7 +27,13 @@ void MergeListNode();   //合并相同姓名的结点
 void WriteToFile();  //将单链表中的节点输出到文件 result.txt 中
 
 ////////////////////////////////排序/////////////////////////////
+void swap(PNode x, PNode y);   //交换两个结点信息
+void insert(PNode p);  //向堆中插入元素
+PNode del();  //从堆中删除元素并返回
 void BubbleSort();  //冒泡排序
 void QuickSort();	//快速排序
+void HeapSort();    //堆排序
+
+
 
 #endif
