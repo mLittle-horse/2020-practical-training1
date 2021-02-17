@@ -7,16 +7,18 @@
 typedef struct User_login{
 	char name[LENGTH];
 	int totalCount;
-}SDataType;   //Á´±í½áµã
+}SDataType;   //é“¾è¡¨ç»“ç‚¹
 
 typedef struct SListNode{
 	SDataType data;
 	struct SListNode *next;
-}Node,*PNode;    //Á´±í½áµãºÍnextÖ¸Õë
+}Node,*PNode;    //é“¾è¡¨ç»“ç‚¹å’ŒnextæŒ‡é’ˆ
 
-extern PNode head, tail;    //¶¨ÒåÁ´±íÍ·¡¢Î²µÄÈ«¾Ö±äÁ¿
+extern PNode head, tail;    //å®šä¹‰é“¾è¡¨å¤´ã€å°¾çš„å…¨å±€å˜é‡
 
-void ReadFromFile();  //´ÓÎÄ¼ş¶ÁÈëÊı¾İ
-void InsertLinkEnd(PNode p); //Î²²å½áµã
+void ReadFromFile();  //ä»æ–‡ä»¶è¯»å…¥æ•°æ®
+void InsertLinkEnd(PNode p); //å°¾æ’ç»“ç‚¹
+void Display();  //éå†é“¾è¡¨ï¼Œè¾“å‡ºä¿¡æ¯
+void DeleteNode(PNode p,PNode pre);  //åˆ é™¤ç»“ç‚¹
 
 #endif

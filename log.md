@@ -59,6 +59,12 @@ void ReadFromFile(){
 
 
 
+#### 2021-2-17	13:59:46   	update List.c
+
+增加了Display功能，输出链表。
+
+
+
 
 
 

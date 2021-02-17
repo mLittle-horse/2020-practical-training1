@@ -4,8 +4,7 @@
 #include "head.h"
 
 int main(){
-	PNode head, tail;
-
-
-	
+	ReadFromFile();
+	Display();
+	return 0;
 }
