@@ -28,6 +28,6 @@ void WriteToFile();  //将单链表中的节点输出到文件 result.txt 中
 
 ////////////////////////////////排序/////////////////////////////
 void BubbleSort();  //冒泡排序
-
+void QuickSort();	//快速排序
 
 #endif

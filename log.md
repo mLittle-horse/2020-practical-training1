@@ -293,3 +293,46 @@ void BubbleSort(){
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217202842.png" alt="image-20210217202840716" style="zoom:67%;" />
 
+
+
+#### 2021-2-17	20:53:36		new QuickSort.c 
+
+##### 代码
+
+```c
+//快速排序
+void QuickSort(){
+	PNode now,p;
+	now=head;
+	while(now){
+		p=now->next;
+		PNode maxx=now;
+		while(p){
+			if(p->data.totalCount>maxx->data.totalCount) maxx=p;
+			p=p->next;
+		}
+		if(maxx!=now){
+			//交换 totalCount 的值 
+			int tem=now->data.totalCount;
+			now->data.totalCount=maxx->data.totalCount;
+			maxx->data.totalCount=tem;
+			//交换name
+			char name[LENGTH];
+			strcpy(name,now->data.name);
+			strcpy(now->data.name,maxx->data.name);
+			strcpy(maxx->data.name,name);
+		}
+		now=now->next;
+	}
+	printf("快速排序完成！\n");
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217205328.png" alt="image-20210217205327038" style="zoom:67%;" />
+
+
+

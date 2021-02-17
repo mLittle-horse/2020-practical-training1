@@ -15,7 +15,10 @@ int main(){
 	MergeListNode();
 	Display();
 //	WriteToFile();
-	BubbleSort();
+
+/////////排序//////////
+//	BubbleSort();
+	QuickSort();
 	Display();
 	return 0;
 }
