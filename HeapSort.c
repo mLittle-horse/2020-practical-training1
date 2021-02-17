@@ -6,6 +6,9 @@
 PNode heap[100005];
 int heap_size = 0;
 
+void insert(PNode p);  //向堆中插入元素
+PNode del();  //从堆中删除元素并返回
+
 void HeapSort(){
 	PNode p = head;
 	while(p){

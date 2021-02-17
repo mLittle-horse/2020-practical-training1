@@ -161,3 +161,15 @@ void MergeListNode(){
 	printf("按回车继续！\n");
 	getchar();
 }
+
+void swap(PNode x,PNode y){
+	//交换 totalCount 的值 
+	int tem=x->data.totalCount;
+	x->data.totalCount=y->data.totalCount;
+	y->data.totalCount=tem;
+	//交换name
+	char name[LENGTH];
+	strcpy(name,x->data.name);
+	strcpy(x->data.name,y->data.name);
+	strcpy(y->data.name,name);
+}
