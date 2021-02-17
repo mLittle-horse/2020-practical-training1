@@ -9,15 +9,7 @@ void BubbleSort(){
 		p=head;
 		while(p->next!=end){
 			if(p->data.totalCount<p->next->data.totalCount){
-				//交换 totalCount 的值 
-				int tem=p->data.totalCount;
-				p->data.totalCount=p->next->data.totalCount;
-				p->next->data.totalCount=tem;
-				//交换name 
-				char name[LENGTH];
-				strcpy(name,p->data.name);
-				strcpy(p->data.name,p->next->data.name);
-				strcpy(p->next->data.name,name);
+				swap(p, p->next);
 			}
 			p=p->next;
 		}

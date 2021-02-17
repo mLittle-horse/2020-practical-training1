@@ -13,15 +13,7 @@ void QuickSort(){
 			p=p->next;
 		}
 		if(maxx!=now){
-			//交换 totalCount 的值 
-			int tem=now->data.totalCount;
-			now->data.totalCount=maxx->data.totalCount;
-			maxx->data.totalCount=tem;
-			//交换name
-			char name[LENGTH];
-			strcpy(name,now->data.name);
-			strcpy(now->data.name,maxx->data.name);
-			strcpy(maxx->data.name,name);
+			swap(now, maxx);
 		}
 		now=now->next;
 	}

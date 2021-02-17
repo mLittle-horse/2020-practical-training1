@@ -269,15 +269,7 @@ void BubbleSort(){
 		p=head;
 		while(p->next!=end){
 			if(p->data.totalCount<p->next->data.totalCount){
-				//交换 totalCount 的值 
-				int tem=p->data.totalCount;
-				p->data.totalCount=p->next->data.totalCount;
-				p->next->data.totalCount=tem;
-				//交换name 
-				char name[LENGTH];
-				strcpy(name,p->data.name);
-				strcpy(p->data.name,p->next->data.name);
-				strcpy(p->next->data.name,name);
+				swap(p, p->next);
 			}
 			p=p->next;
 		}
@@ -312,15 +304,7 @@ void QuickSort(){
 			p=p->next;
 		}
 		if(maxx!=now){
-			//交换 totalCount 的值 
-			int tem=now->data.totalCount;
-			now->data.totalCount=maxx->data.totalCount;
-			maxx->data.totalCount=tem;
-			//交换name
-			char name[LENGTH];
-			strcpy(name,now->data.name);
-			strcpy(now->data.name,maxx->data.name);
-			strcpy(maxx->data.name,name);
+			swap(now, maxx);
 		}
 		now=now->next;
 	}
@@ -335,4 +319,10 @@ void QuickSort(){
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217205328.png" alt="image-20210217205327038" style="zoom:67%;" />
 
 
+
+#### 2021-2-17	21:18:16		add swap function to simplify code
+
+##### 代码截图
+
+<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217211949158.png" alt="image-20210217211949158" style="zoom:67%;" />
 
