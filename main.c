@@ -6,5 +6,7 @@
 int main(){
 	ReadFromFile();
 	Display();
+	DeleteRecord();
+	Display();
 	return 0;
 }

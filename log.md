@@ -59,13 +59,69 @@ void ReadFromFile(){
 
 
 
-#### 2021-2-17	13:59:46   	update List.c
+#### 2021-2-17	13:59:46   	update List.c--add Display function
 
-增加了Display功能，输出链表。
+增加并测试了Display功能，输出链表。
 
-
-
-
+<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217140127066.png" alt="image-20210217140127066" style="zoom:67%;" />
 
 
+
+#### 2021-2-17	14:41:34		update List.c--add DeleteRecord function
+
+其中DeleteRecord()调用DeleteNode()函数。DeleteNode是删除给定的指针所指向的结点。
+
+DeleteRecord()里面设计了找到结点后可以选择删或不删。
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/image-20210217144404403.png" alt="image-20210217144404403" style="zoom:67%;" />![](https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/image-20210217144404403.png)
+
+```c
+//DeleteRecord function
+void DeleteRecord(){
+	if(head==NULL){
+		printf("没有信息，请先存入登录信息！");
+		return ;
+	}
+//	Display();
+	PNode p = NULL, pre = NULL;
+	printf("请输入想要删除的姓名:");
+	char name[LENGTH];
+	scanf("%s", name);
+	while (1)
+	{
+		p = head;
+		int findFlag = 0;
+		while(p){
+			if(!strcmp(p->data.name,name)){
+				findFlag = 1;
+				printf("找到该登录信息如下：\n");
+				printf("\t姓名\t登录次数\n");
+				printf("\t%s\t%d\n",p->data.name,p->data.totalCount);
+				printf("确认要删除吗？[y/n]");
+				char ch;
+				scanf(" %c",&ch);
+				if(ch=='y'||ch=='Y'){
+					DeleteNode(p,pre);
+				}
+				else{
+					printf("你选择不删除信息！\n\n");
+				}
+				break;
+			}
+			pre = p;
+			p = p->next;
+		}
+		if(findFlag==1)
+			break;
+		else{
+			printf("没有找到该用户信息，请重新输入！\n");
+			printf("新的姓名：");
+			scanf("%s",name);
+		}
+	}
+	printf("请按回车返回!");
+	getchar();
+	getchar();
+}
+```
 

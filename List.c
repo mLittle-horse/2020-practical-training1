@@ -35,4 +35,62 @@ void Display(){
 	getchar();
 }
 
+void DeleteNode(PNode p,PNode pre){
+	if(p==head){
+		head = p->next;
+	}
+	else{
+		pre->next = p->next;
+		if(p==tail)
+			tail = pre;
+	}
+	free(p);
+	printf("该登录信息删除成功！\n");
+}
 
+void DeleteRecord(){
+	if(head==NULL){
+		printf("没有信息，请先存入登录信息！");
+		return ;
+	}
+//	Display();
+	PNode p = NULL, pre = NULL;
+	printf("请输入想要删除的姓名:");
+	char name[LENGTH];
+	scanf("%s", name);
+	while (1)
+	{
+		p = head;
+		int findFlag = 0;
+		while(p){
+			if(!strcmp(p->data.name,name)){
+				findFlag = 1;
+				printf("找到该登录信息如下：\n");
+				printf("\t姓名\t登录次数\n");
+				printf("\t%s\t%d\n",p->data.name,p->data.totalCount);
+				printf("确认要删除吗？[y/n]");
+				char ch;
+				scanf(" %c",&ch);
+				if(ch=='y'||ch=='Y'){
+					DeleteNode(p,pre);
+				}
+				else{
+					printf("你选择不删除信息！\n\n");
+				}
+				break;
+			}
+			pre = p;
+			p = p->next;
+		}
+		if(findFlag==1)
+			break;
+		else{
+			printf("没有找到该用户信息，请重新输入！\n");
+			printf("新的姓名：");
+			scanf("%s",name);
+		}
+	}
+	printf("请按回车返回!");
+	getchar();
+	getchar();
+}
