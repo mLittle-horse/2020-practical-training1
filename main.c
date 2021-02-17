@@ -19,7 +19,8 @@ int main(){
 /////////排序//////////
 //	BubbleSort();
 //	QuickSort();
-	HeapSort();
+//	HeapSort();
+	RadixSort();
 	Display();
 	return 0;
 }
