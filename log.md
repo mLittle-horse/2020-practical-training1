@@ -63,9 +63,13 @@ void ReadFromFile(){
 
 增加并测试了Display功能，输出链表。
 
+##### 代码截图
+
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217145914.png" alt="image-20210217140127066" style="zoom:67%;" />
 
+##### 测试结果
 
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217170433.png" alt="image-20210217170431934" style="zoom:67%;" />
 
 #### 2021-2-17	14:41:34		update List.c--add DeleteRecord function
 
@@ -73,7 +77,13 @@ void ReadFromFile(){
 
 DeleteRecord()里面设计了找到结点后可以选择删或不删。
 
+##### 代码截图
+
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/image-20210217144404403.png" alt="image-20210217144404403" style="zoom:67%;" />
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217170548.png" alt="image-20210217170546954" style="zoom:67%;" />
 
 ```c
 //DeleteRecord function
@@ -131,13 +141,15 @@ void DeleteRecord(){
 
 加入了添加结点的功能并测试。
 
+##### 代码
+
 ```c
 //InputRecord function	
 void InputRecord(){
 	PNode p, q;
 	while(1){
 		p = (PNode)malloc(LEN);
-		printf("输入姓名，登录时间：");
+		printf("输入待添加信息(格式：姓名,登录时间)：");
 		char message[LENGTH << 1], name[LENGTH];
 		scanf("%s", message);
 		int index = 0;
@@ -167,3 +179,18 @@ void InputRecord(){
 }
 ```
 
+##### 测试结果
+
+<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217170718489.png" alt="image-20210217170718489" style="zoom:67%;" />
+
+#### 2021-2-17	17:00:54		update List.c--add Destroy function
+
+添加了销毁链表功能并测试。
+
+##### 代码截图
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217170239.png" alt="image-20210217170230494" style="zoom:67%;" />
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217170026.png" alt="image-20210217165957730" style="zoom:67%;" />

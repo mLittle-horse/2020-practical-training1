@@ -10,5 +10,7 @@ int main(){
 	Display();
 	InputRecord();
 	Display();
+	Destroy();
+	Display();
 	return 0;
 }

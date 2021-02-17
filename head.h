@@ -22,5 +22,6 @@ void Display();  //遍历链表，输出信息
 void DeleteNode(PNode p,PNode pre);  //删除指定结点
 void DeleteRecord();  //删除某条记录
 void InputRecord();  //增加某条记录
+void Destroy();  //摧毁链表
 
 #endif

@@ -96,10 +96,10 @@ void DeleteRecord(){
 }
 
 void InputRecord(){
-	PNode p, q;
+	PNode p;
 	while(1){
 		p = (PNode)malloc(LEN);
-		printf("输入姓名，登录时间：");
+		printf("输入待添加信息(格式：姓名,登录时间)：");
 		char message[LENGTH << 1], name[LENGTH];
 		scanf("%s", message);
 		int index = 0;
@@ -126,6 +126,18 @@ void InputRecord(){
 	printf("请按回车键继续!");
 	getchar();
 	getchar();
+}
+
+void Destroy(){
+	PNode p = head;
+	while(p){
+		PNode tem = p->next;
+//		printf("%s已销毁\n", p->data.name);   //验证是否销毁
+		free(p);
+		p = NULL;
+		p = tem;
+	}
+	head = tail = NULL;
 }
 
 
