@@ -181,7 +181,7 @@ void InputRecord(){
 
 ##### 测试结果
 
-<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217170718489.png" alt="image-20210217170718489" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217233805.png" alt="image-20210217170718489" style="zoom:67%;" />
 
 #### 2021-2-17	17:00:54		update List.c--add Destroy function
 
@@ -221,7 +221,7 @@ void InputRecord(){
 
 ##### 测试结果
 
-<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217195221148.png" alt="image-20210217195221148" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217233858.png" alt="image-20210217195221148" style="zoom:67%;" />
 
 
 
@@ -324,7 +324,7 @@ void QuickSort(){
 
 ##### 代码截图
 
-<img src="C:\Users\mxp101800\AppData\Roaming\Typora\typora-user-images\image-20210217211949158.png" alt="image-20210217211949158" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217233946.png" alt="image-20210217211949158" style="zoom:67%;" />
 
 
 
