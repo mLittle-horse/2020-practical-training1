@@ -20,7 +20,9 @@ int main(){
 //	BubbleSort();
 //	QuickSort();
 //	HeapSort();
-	RadixSort();
+//	RadixSort();
+
+	QSort();
 	Display();
 	return 0;
 }

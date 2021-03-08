@@ -467,3 +467,68 @@ int maxBit(){
 ##### 测试结果
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210217233049.png" alt="image-20210217233047019" style="zoom:67%;" />
+
+
+
+
+
+#### 2021-3-8	11:33:38		new QSort.c
+
+##### 代码
+
+```c
+PNode brr[100005];
+int brr_size = 0;
+
+void QSort(){
+	PNode p=head;
+	while(p){
+		brr[brr_size++] = p;
+		p = p->next;
+	}
+	qsort(brr, brr_size, sizeof(PNode), compare);
+	head = tail = NULL;
+	while(--brr_size>=0){
+		InsertLinkEnd(brr[brr_size]);
+	}
+	printf("改进版快速排序完成！\n");
+}
+
+/**
+ * qsort函数包含在C 标准库 - <stdlib.h>
+ * int compare(const void *p1, const void *p2);
+ * 如果compare返回值小于0（< 0），那么p1所指向元素会被排在p2所指向元素的左面；
+ * 如果compare返回值等于0（= 0），那么p1所指向元素与p2所指向元素的顺序不确定；
+ * 如果compare返回值大于0（> 0），那么p1所指向元素会被排在p2所指向元素的右面。
+ * int 类型的compare函数如下
+int comp(const void*a,const void*b)
+{
+	return *(int*)a-*(int*)b;
+}
+*/
+int compare(const void *pa,const void *pb){
+//	return (*(PNode)pa).data.totalCount - (*(PNode)pb).data.totalCount;    //对Node类型排序的
+	return (*((PNode *)pa))->data.totalCount - (*((PNode *)pb))->data.totalCount; //对PNode类型排序的
+}
+```
+
+其中compare函数尤其要注意，这个容易出错，应该用的指针类型来进行比较
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210308114935.png" alt="image-20210308114815989" style="zoom:67%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+

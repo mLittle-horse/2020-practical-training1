@@ -6,6 +6,8 @@
 PNode head, tail;    //定义链表头、尾的全局变量
 
 void InsertLinkEnd(PNode p){
+	if(p==NULL)
+		return;
 	if(head==NULL){
 		head = tail = p;
 		tail->next = NULL;
