@@ -4,17 +4,17 @@
 #include "head.h"
 
 int main(){
-	ReadFromFile();
-	Display();
+	// ReadFromFile();
+	// Display();
 	// DeleteRecord();
 	// Display();
 	// InputRecord();
 	// Display();
 	// Destroy();
 	// Display();
-	MergeListNode();
-	Display();
-//	WriteToFile();
+	// MergeListNode();
+	// Display();
+	// WriteToFile();
 
 /////////排序//////////
 //	BubbleSort();
@@ -22,7 +22,16 @@ int main(){
 //	HeapSort();
 //	RadixSort();
 
-	QSort();
-	Display();
+//	QSort();
+//	Display();
+
+///////////二叉搜索树/////////////
+	CreateBST();
+	printf("先序遍历结果如下：\n");
+	PreOrderTraverse(Tree._pRoot);
+	printf("中序遍历结果如下：\n");
+	InOrderTraverse(Tree._pRoot);
+	printf("后序遍历结果如下：\n");
+	PostOrderTraverse(Tree._pRoot);
 	return 0;
 }

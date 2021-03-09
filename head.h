@@ -36,4 +36,29 @@ void RadixSort();   //基排序
 int compare(const void *pa, const void *pb);   //qsort的比较函数
 void QSort();   //修改快速排序--使用标准库中的qsort()函数
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct TreeNode
+{
+	SDataType _data;
+	struct TreeNode *_Pleft;
+	struct TreeNode *_Pright;
+}TreeNode,*PTreeNode;    //封装BST的结点和左右子树指针
+
+typedef struct BST{
+	PTreeNode _pRoot;    //指向BST的根节点
+}BST;
+
+
+extern BST Tree;
+
+
+void CreateBST();
+void InsertTreeNode(PTreeNode p);
+void PreOrderTraverse(PTreeNode T);
+void InOrderTraverse(PTreeNode T);
+void PostOrderTraverse(PTreeNode T);
+
+
+
 #endif
