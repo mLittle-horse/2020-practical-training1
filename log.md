@@ -675,7 +675,7 @@ void DeleteTreeNode(){
 		printf("请输入想要删除的用户名：");
 		char name[LENGTH];
 		scanf("%s", name);
-		PTreeNode now = Tree._pRoot,fa=Tree._pRoot;
+		PTreeNode now = Tree._pRoot,fa=Tree._pRoot;  //now为待删结点，fa为其父亲
 		int direction;   //0：左边    1：右边
 		while(now){
 			if(strcmp(name,now->_data.name)==0){
@@ -699,6 +699,10 @@ void DeleteTreeNode(){
 		}
 		else{
 			if(now->_Pleft==NULL&&now->_Pright==NULL){   //左右子树都为空
+				if(now==Tree._pRoot){   //说明只有这一个结点
+					Tree._pRoot = NULL;
+					return;
+				}
 				if(direction==0){
 					fa->_Pleft = NULL;
 				}
@@ -706,7 +710,11 @@ void DeleteTreeNode(){
 					fa->_Pright = NULL;
 				}
 			}
-			else if(now->_Pleft==NULL){   //仅左子树为空
+			else if(now->_Pleft==NULL){   //仅左子树为空,就把其右子树接到父亲上
+				if(now==Tree._pRoot){
+					Tree._pRoot = now->_Pright;
+					return;
+				}
 				if(direction==0){
 					fa->_Pleft = now->_Pright;
 				}
@@ -714,7 +722,11 @@ void DeleteTreeNode(){
 					fa->_Pright = now->_Pright;
 				}
 			}
-			else if(now->_Pright==NULL){  //仅右子树为空
+			else if(now->_Pright==NULL){  //仅右子树为空，就把其左子树接到父亲上
+				if(now==Tree._pRoot){
+					Tree._pRoot = now->_Pright;
+					return ;
+				}
 				if(direction==0){
 					fa->_Pleft = now->_Pleft;
 				}
@@ -724,30 +736,36 @@ void DeleteTreeNode(){
 			}
 			else{   //左右子树都不为空
 				//要找到now的右子树的最左下结点和now替换,下面的nex即为now的后继
-				PTreeNode nex = now->_Pright,nex_fa=now;
-				int nex_direction = 1;
-				while(nex->_Pleft){
-					nex_direction = 0;
-					nex_fa = nex;
-					nex = nex->_Pleft;
+				PTreeNode nex = now->_Pright;
+				if(nex->_Pleft==NULL){ //其左子树为空，则其为now的后继
+					nex->_Pleft = now->_Pleft;
+					if(direction==0){
+						fa->_Pleft = nex;
+					}
+					else{
+						fa->_Pright = nex;
+					}
+					if(now==Tree._pRoot)   //考虑如果new为根，需要修改
+						Tree._pRoot = nex;
 				}
-				//因为要将nex和now替换，所以nex_fa的之前nex方向的变为now后即为NULL
-				if(nex_direction==0){
+				else{  //nex左子树不空，就顺着左边一直走到底
+					PTreeNode nex_fa;
+					while(nex->_Pleft){
+						nex_fa = nex;
+						nex = nex->_Pleft;
+					}
 					nex_fa->_Pleft = NULL;
-				}
-				else{
-					nex_fa->_Pright = NULL;
-				}
-				//这里要将之前now的一些关系转移给nex
-				if(direction==0){
-					fa->_Pleft = nex;
+					//这里要将之前now的一些关系转移给nex
 					nex->_Pleft = now->_Pleft;
 					nex->_Pright = now->_Pright;
-				}
-				else{
-					fa->_Pright = nex;
-					nex->_Pleft = now->_Pleft;
-					nex->_Pright = now->_Pright;
+					if(direction==0){
+						fa->_Pleft = nex;
+					}
+					else{
+						fa->_Pright = nex;
+					}
+					if(now==Tree._pRoot)
+						Tree._pRoot = nex;
 				}
 			}
 			printf("删除结点：%s,%d\n", now->_data.name, now->_data.totalCount);
@@ -781,7 +799,30 @@ void DeleteTreeNode(){
 
 
 
+#### 2021-3-9	20:48:24		update BST.c--new AddTreeNode、update DeleteTreeNode
 
+我在测新函数AddTreeNode的时候中序遍历发现之前的删除函数DeleteTreeNode有所不足，就改了一点，具体表现在没有判断当删除结点为根节点时要修改根，不然会造成之后操作的问题。
+
+##### 代码
+
+```c
+void AddTreeNode(){
+	printf("请输入要添加的用户名：");
+	char name[LENGTH];
+	scanf("%s", name);
+	PTreeNode p = (PTreeNode)malloc(sizeof(TreeNode));
+	strcpy(p->_data.name, name);
+	p->_data.totalCount = 1;
+	p->_Pleft = p->_Pright = NULL;
+	InsertTreeNode(p);
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309205313.png" alt="image-20210309205311350" style="zoom:67%;" />
 
 
 

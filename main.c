@@ -36,5 +36,8 @@ int main(){
 	DeleteTreeNode();
 	printf("中序遍历结果如下：\n");
 	InOrderTraverse(Tree._pRoot);
+	AddTreeNode();
+	printf("中序遍历结果如下：\n");
+	InOrderTraverse(Tree._pRoot);
 	return 0;
 }
