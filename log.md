@@ -826,5 +826,46 @@ void AddTreeNode(){
 
 
 
+#### 2021-3-9	21:15:03		update BST.c--new SearchTimesByName
+
+这里写了一个带参数的函数，需要在主函数里输入name然后传参给该函数去查询，返回值为int
+
+##### 代码
+
+```c
+int SearchTimesByName(char name[]){
+	if(Tree._pRoot==NULL){
+		printf("此时没有存储信息,无法查找！\n");
+		printf("按回车返回！\n");
+		getchar();
+		return 0;
+	}
+	PTreeNode now = Tree._pRoot;
+	while(now){
+		if(strcmp(name,now->_data.name)==0){
+			return now->_data.totalCount;
+		}
+		else if(strcmp(name,now->_data.name)<0){
+			now = now->_Pleft;
+		}
+		else{
+			now = now->_Pright;
+		}
+	}
+	printf("没有找到该用户信息！\n");
+	printf("按回车返回！\n");
+	getchar();
+	getchar();
+	return 0;
+}
+```
 
 
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309211721.png" alt="image-20210309211719961" style="zoom:67%;" />
+
+这个是故意输入一个不存在的用户测试查询的
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309211758.png" alt="image-20210309211757045" style="zoom:67%;" />

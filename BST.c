@@ -231,3 +231,30 @@ void AddTreeNode(){
 	p->_Pleft = p->_Pright = NULL;
 	InsertTreeNode(p);
 }
+
+
+int SearchTimesByName(char name[]){
+	if(Tree._pRoot==NULL){
+		printf("此时没有存储信息,无法查找！\n");
+		printf("按回车返回！\n");
+		getchar();
+		return 0;
+	}
+	PTreeNode now = Tree._pRoot;
+	while(now){
+		if(strcmp(name,now->_data.name)==0){
+			return now->_data.totalCount;
+		}
+		else if(strcmp(name,now->_data.name)<0){
+			now = now->_Pleft;
+		}
+		else{
+			now = now->_Pright;
+		}
+	}
+	printf("没有找到该用户信息！\n");
+	printf("按回车返回！\n");
+	getchar();
+	getchar();
+	return 0;
+}

@@ -33,11 +33,21 @@ int main(){
 	InOrderTraverse(Tree._pRoot);
 	// printf("后序遍历结果如下：\n");
 	// PostOrderTraverse(Tree._pRoot);
-	DeleteTreeNode();
-	printf("中序遍历结果如下：\n");
-	InOrderTraverse(Tree._pRoot);
-	AddTreeNode();
-	printf("中序遍历结果如下：\n");
-	InOrderTraverse(Tree._pRoot);
+
+	// DeleteTreeNode();
+	// printf("中序遍历结果如下：\n");
+	// InOrderTraverse(Tree._pRoot);
+
+	// AddTreeNode();
+	// printf("中序遍历结果如下：\n");
+	// InOrderTraverse(Tree._pRoot);
+
+	char name[LENGTH];
+	printf("请输入想要查询登录次数的用户名：");
+	scanf("%s", name);
+	int num = SearchTimesByName(name);
+	if(num!=0){
+		printf("登录次数：%d", num);
+	}
 	return 0;
 }

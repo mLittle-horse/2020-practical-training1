@@ -60,5 +60,6 @@ void InOrderTraverse(PTreeNode T);
 void PostOrderTraverse(PTreeNode T);
 void DeleteTreeNode();    //给出一个名字，将这个名字的结点从二叉搜索树 中删除
 void AddTreeNode();   //这个是新增结点，输入用户姓名，默认登录次数为1
+int SearchTimesByName(char name[]);   //对人名的查找，显示登录次数信息
 
 #endif
