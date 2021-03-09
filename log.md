@@ -657,9 +657,127 @@ void PostOrderTraverse(PTreeNode T){
 
 
 
+#### 2021-3-9	13:58:34		update BST.c--new DeleteTreeNode
+
+这里出现了一个问题，就是我个人习惯宏定义LEN，这样用malloc分配size的时候就不用每次写sizeof，但是这里其实是多个文件，之前那种类型的时候用过一个LEN了，这次在建树的时候还是分配的空间为free，这样做是可以正常运行的，也就是为什么上面new CreateBST、new InsertTreeNode、new tree traverse这些函数都能正常原因，但是在删除结点的时候需要free，free的时候却抛出了异常。所以就去网上查了一下发现原因是我使用的空间超出了malloc时向系统申请的空间。
+
+##### 代码
+
+```c
+void DeleteTreeNode(){
+	if(Tree._pRoot==NULL){
+		printf("此时没有存储信息！\n");
+		printf("按回车返回！\n");
+		getchar();
+		return;
+	}
+	else{
+		printf("请输入想要删除的用户名：");
+		char name[LENGTH];
+		scanf("%s", name);
+		PTreeNode now = Tree._pRoot,fa=Tree._pRoot;
+		int direction;   //0：左边    1：右边
+		while(now){
+			if(strcmp(name,now->_data.name)==0){
+				break;
+			}
+			else if(strcmp(name,now->_data.name)<0){
+				fa = now;
+				now = now->_Pleft;
+				direction = 0;
+			}
+			else{
+				fa = now;
+				now = now->_Pright;
+				direction = 1;
+			}
+		}
+		if(!now){
+			printf("没有找到该用户的信息！\n");
+			printf("请按回车返回！\n");
+			return;
+		}
+		else{
+			if(now->_Pleft==NULL&&now->_Pright==NULL){   //左右子树都为空
+				if(direction==0){
+					fa->_Pleft = NULL;
+				}
+				else{
+					fa->_Pright = NULL;
+				}
+			}
+			else if(now->_Pleft==NULL){   //仅左子树为空
+				if(direction==0){
+					fa->_Pleft = now->_Pright;
+				}
+				else{
+					fa->_Pright = now->_Pright;
+				}
+			}
+			else if(now->_Pright==NULL){  //仅右子树为空
+				if(direction==0){
+					fa->_Pleft = now->_Pleft;
+				}
+				else{
+					fa->_Pright = now->_Pleft;
+				}
+			}
+			else{   //左右子树都不为空
+				//要找到now的右子树的最左下结点和now替换,下面的nex即为now的后继
+				PTreeNode nex = now->_Pright,nex_fa=now;
+				int nex_direction = 1;
+				while(nex->_Pleft){
+					nex_direction = 0;
+					nex_fa = nex;
+					nex = nex->_Pleft;
+				}
+				//因为要将nex和now替换，所以nex_fa的之前nex方向的变为now后即为NULL
+				if(nex_direction==0){
+					nex_fa->_Pleft = NULL;
+				}
+				else{
+					nex_fa->_Pright = NULL;
+				}
+				//这里要将之前now的一些关系转移给nex
+				if(direction==0){
+					fa->_Pleft = nex;
+					nex->_Pleft = now->_Pleft;
+					nex->_Pright = now->_Pright;
+				}
+				else{
+					fa->_Pright = nex;
+					nex->_Pleft = now->_Pleft;
+					nex->_Pright = now->_Pright;
+				}
+			}
+			printf("删除结点：%s,%d\n", now->_data.name, now->_data.totalCount);
+			free(now);
+		}
+	}
+}
+```
 
 
 
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309173505.png" alt="image-20210309173503873" style="zoom: 67%;" />
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309173624.png" alt="image-20210309173622701" style="zoom:67%;" />
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309173744.png" alt="image-20210309173743601" style="zoom:67%;" />
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309173859.png" alt="image-20210309173855974" style="zoom:67%;" />
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210309174136.png" alt="image-20210309174134994" style="zoom:50%;" />
 
 
 

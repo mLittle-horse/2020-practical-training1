@@ -18,7 +18,7 @@ void CreateBST(){
 	PTreeNode p;
 	char message[LENGTH << 1], name[LENGTH];
 	while(!feof(fp)){
-		p = (PTreeNode)malloc(LEN);
+		p = (PTreeNode)malloc(sizeof(TreeNode));
 		fscanf(fp, "%s", message);
 		int index = 0;
 		for (int i = 0; i < strlen(message);i++){
@@ -111,3 +111,94 @@ void PostOrderTraverse(PTreeNode T){
 }
 
 
+void DeleteTreeNode(){
+	if(Tree._pRoot==NULL){
+		printf("此时没有存储信息！\n");
+		printf("按回车返回！\n");
+		getchar();
+		return;
+	}
+	else{
+		printf("请输入想要删除的用户名：");
+		char name[LENGTH];
+		scanf("%s", name);
+		PTreeNode now = Tree._pRoot,fa=Tree._pRoot;
+		int direction;   //0：左边    1：右边
+		while(now){
+			if(strcmp(name,now->_data.name)==0){
+				break;
+			}
+			else if(strcmp(name,now->_data.name)<0){
+				fa = now;
+				now = now->_Pleft;
+				direction = 0;
+			}
+			else{
+				fa = now;
+				now = now->_Pright;
+				direction = 1;
+			}
+		}
+		if(!now){
+			printf("没有找到该用户的信息！\n");
+			printf("请按回车返回！\n");
+			return;
+		}
+		else{
+			if(now->_Pleft==NULL&&now->_Pright==NULL){   //左右子树都为空
+				if(direction==0){
+					fa->_Pleft = NULL;
+				}
+				else{
+					fa->_Pright = NULL;
+				}
+			}
+			else if(now->_Pleft==NULL){   //仅左子树为空
+				if(direction==0){
+					fa->_Pleft = now->_Pright;
+				}
+				else{
+					fa->_Pright = now->_Pright;
+				}
+			}
+			else if(now->_Pright==NULL){  //仅右子树为空
+				if(direction==0){
+					fa->_Pleft = now->_Pleft;
+				}
+				else{
+					fa->_Pright = now->_Pleft;
+				}
+			}
+			else{   //左右子树都不为空
+				//要找到now的右子树的最左下结点和now替换,下面的nex即为now的后继
+				PTreeNode nex = now->_Pright,nex_fa=now;
+				int nex_direction = 1;
+				while(nex->_Pleft){
+					nex_direction = 0;
+					nex_fa = nex;
+					nex = nex->_Pleft;
+				}
+				//因为要将nex和now替换，所以nex_fa的之前nex方向的变为now后即为NULL
+				if(nex_direction==0){
+					nex_fa->_Pleft = NULL;
+				}
+				else{
+					nex_fa->_Pright = NULL;
+				}
+				//这里要将之前now的一些关系转移给nex
+				if(direction==0){
+					fa->_Pleft = nex;
+					nex->_Pleft = now->_Pleft;
+					nex->_Pright = now->_Pright;
+				}
+				else{
+					fa->_Pright = nex;
+					nex->_Pleft = now->_Pleft;
+					nex->_Pright = now->_Pright;
+				}
+			}
+			printf("删除结点：%s,%d\n", now->_data.name, now->_data.totalCount);
+			free(now);
+		}
+	}
+}

@@ -60,5 +60,8 @@ void InOrderTraverse(PTreeNode T);
 void PostOrderTraverse(PTreeNode T);
 
 
+void DeleteTreeNode();    //给出一个名字，将这个名字的结点从二叉搜索树 中删除
+
+
 
 #endif
