@@ -3,7 +3,18 @@
 #include <string.h>
 #include "head.h"
 
+void TestLink();
+void TestBST();
+void TESTAVL();
+
 int main(){
+	// TestLink();
+	// TestBST();
+	TESTAVL();
+	return 0;
+}
+
+void TestLink(){
 	// ReadFromFile();
 	// Display();
 	// DeleteRecord();
@@ -24,8 +35,10 @@ int main(){
 
 //	QSort();
 //	Display();
+}
 
-///////////二叉搜索树/////////////
+void TestBST(){
+	///////////二叉搜索树/////////////
 	CreateBST();
 	// printf("先序遍历结果如下：\n");
 	// PreOrderTraverse(Tree._pRoot);
@@ -42,12 +55,24 @@ int main(){
 	// printf("中序遍历结果如下：\n");
 	// InOrderTraverse(Tree._pRoot);
 
-	char name[LENGTH];
-	printf("请输入想要查询登录次数的用户名：");
-	scanf("%s", name);
-	int num = SearchTimesByName(name);
-	if(num!=0){
-		printf("登录次数：%d", num);
-	}
-	return 0;
+	// char name[LENGTH];
+	// printf("请输入想要查询登录次数的用户名：");
+	// scanf("%s", name);
+	// int num = SearchTimesByName(name);
+	// if(num!=0){
+	// 	printf("登录次数：%d", num);
+	// }
+}
+
+void TESTAVL(){
+	///////////平衡二叉树/////////////
+	CreateAVLTree();
+	printf("先序遍历结果如下：\n");
+	PreOrderTraverseAVL(ATree._pRoot);
+	printf("中序遍历结果如下：\n");
+	InOrderTraverseAVL(ATree._pRoot);
+	printf("后序遍历结果如下：\n");
+	PostOrderTraverseAVL(ATree._pRoot);
+
+
 }

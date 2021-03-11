@@ -36,7 +36,7 @@ void RadixSort();   //基排序
 int compare(const void *pa, const void *pb);   //qsort的比较函数
 void QSort();   //修改快速排序--使用标准库中的qsort()函数
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////二叉搜索树BST//////////////////////////////////////////////////////
 
 typedef struct TreeNode
 {
@@ -61,5 +61,40 @@ void PostOrderTraverse(PTreeNode T);
 void DeleteTreeNode();    //给出一个名字，将这个名字的结点从二叉搜索树 中删除
 void AddTreeNode();   //这个是新增结点，输入用户姓名，默认登录次数为1
 int SearchTimesByName(char name[]);   //对人名的查找，显示登录次数信息
+
+
+////////////////////////////////////////平衡二叉树AVL//////////////////////////////////////////////////////
+//AVL里面采用递归的方法来写Insert和Delete
+
+typedef struct AVLTreeNode
+{
+	SDataType _data;
+	struct AVLTreeNode *_Pleft;
+	struct AVLTreeNode *_Pright;
+	int height;
+}AVLTreeNode,*PAVLTreeNode;    //封装AVL的结点和左右子树指针
+
+typedef struct AVL{
+	PAVLTreeNode _pRoot;    //指向AVL的根节点
+}AVL;
+
+extern AVL ATree;
+
+void CreateAVLTree();
+PAVLTreeNode InsertAVLTreeNode(PAVLTreeNode now, SDataType data);
+
+//辅助函数
+PAVLTreeNode CreatAVLNode(SDataType data);
+int high(PAVLTreeNode p);
+int GetBalance(PAVLTreeNode p);
+PAVLTreeNode l_rotate(PAVLTreeNode p);
+PAVLTreeNode r_rotate(PAVLTreeNode p);
+int Max(int a, int b);
+
+//遍历
+void PreOrderTraverseAVL(PAVLTreeNode T);
+void InOrderTraverseAVL(PAVLTreeNode T);
+void PostOrderTraverseAVL(PAVLTreeNode T);
+
 
 #endif
