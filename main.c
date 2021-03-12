@@ -67,12 +67,23 @@ void TestBST(){
 void TESTAVL(){
 	///////////平衡二叉树/////////////
 	CreateAVLTree();
+	
+	//遍历
 	printf("先序遍历结果如下：\n");
 	PreOrderTraverseAVL(ATree._pRoot);
-	printf("中序遍历结果如下：\n");
-	InOrderTraverseAVL(ATree._pRoot);
-	printf("后序遍历结果如下：\n");
-	PostOrderTraverseAVL(ATree._pRoot);
+	// printf("中序遍历结果如下：\n");
+	// InOrderTraverseAVL(ATree._pRoot);
+	// printf("后序遍历结果如下：\n");
+	// PostOrderTraverseAVL(ATree._pRoot);
 
+	//删除
+	SDataType data;
+	printf("请输入想要删除的用户名：");
+	char name[LENGTH];
+	scanf("%s", name);
+	strcpy(data.name, name);
+	ATree._pRoot = DeleteAVLTreeNode(ATree._pRoot, data);
+	printf("删除后先序遍历结果如下：\n");
+	PreOrderTraverseAVL(ATree._pRoot);
 
 }

@@ -82,6 +82,7 @@ extern AVL ATree;
 
 void CreateAVLTree();
 PAVLTreeNode InsertAVLTreeNode(PAVLTreeNode now, SDataType data);
+PAVLTreeNode DeleteAVLTreeNode(PAVLTreeNode now, SDataType data);
 
 //辅助函数
 PAVLTreeNode CreatAVLNode(SDataType data);

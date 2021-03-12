@@ -166,3 +166,64 @@ void PostOrderTraverseAVL(PAVLTreeNode T){
 		printf("%s,%d\n",T->_data.name,T->_data.totalCount);
 	}
 }
+
+//递归删除now子树中的值为data的结点并返回删除后的子树根节点
+PAVLTreeNode DeleteAVLTreeNode(PAVLTreeNode now, SDataType data){
+	if(now==NULL){
+//		printf("没有找到该用户的信息，无法删除！\n");
+		return NULL;
+	}
+	else if(strcmp(data.name,now->_data.name)<0){  //左子树
+		now->_Pleft = DeleteAVLTreeNode(now->_Pleft, data);
+	}
+	else if(strcmp(data.name,now->_data.name)>0){  //右子树
+		now->_Pright = DeleteAVLTreeNode(now->_Pright, data);
+	}
+	else{  //找到了相同值的结点，删除
+		if(now->_Pleft==NULL||now->_Pright==NULL){
+//			printf("删除结点：%s,%d\n", now->_data.name, now->_data.totalCount);
+			PAVLTreeNode tem = now->_Pleft == NULL ? now->_Pright : now->_Pleft;
+			if(tem==NULL){  //说明该结点是叶子结点，左右子树均为空，直接删除即可
+				free(now);
+				now = NULL;
+			}
+			else{
+				free(now);
+				now = tem;  //直接让其唯一的一个儿子来当根节点
+			}
+		}
+		else{  //now结点的左右子树都存在
+			//首先找到后继结点
+			PAVLTreeNode nex = now->_Pright;
+			while(nex->_Pleft){
+				nex = nex->_Pleft;
+			}
+			now->_data = nex->_data;  //用后继结点来代替now，这里采用将nex的值给now，然后将nex结点删去的方法
+			now->_Pright = DeleteAVLTreeNode(now->_Pright, nex->_data);
+		}
+	}
+	if(now==NULL)
+		return now;
+	//接着判断该结点是否平衡
+	now->height = Max(high(now->_Pleft), high(now->_Pright)) + 1;
+	int balance = GetBalance(now);
+	if(balance>1&&GetBalance(now->_Pleft)>=0){  //LL
+		return l_rotate(now);
+	}
+	if(balance>1&&GetBalance(now->_Pleft)<0){  //LR
+		PAVLTreeNode tem = r_rotate(now->_Pleft);
+		now->_Pleft = tem;
+		return l_rotate(now);
+	}
+	if(balance<-1&&GetBalance(now->_Pright)<=0){  //RR
+		return r_rotate(now);
+	}
+	if(balance<-1&&GetBalance(now->_Pright)>0){  //RL
+		PAVLTreeNode tem = l_rotate(now->_Pright);
+		now->_Pright = tem;
+		return r_rotate(now);
+	}
+	return now;   //如果经过删除操作后仍然平衡，直接返回即可
+}
+
+
