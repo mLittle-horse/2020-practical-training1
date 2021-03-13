@@ -118,13 +118,23 @@ void TestHash(){
 	TraverseHashTable(pHashtable);
 
 	//////////删除
-	printf("请输入待删除的用户名：\n");
+	// printf("请输入待删除的用户名：\n");
+	// scanf("%s", name);
+	// strcpy(data.name, name);
+	// DeleteHashNode(pHashtable, data);
+	//遍历
+	// printf("遍历如下:\n");
+	// TraverseHashTable(pHashtable);
+
+	//////////查询
+	printf("请输入想要查询登录次数的用户名：");
 	scanf("%s", name);
 	strcpy(data.name, name);
-	DeleteHashNode(pHashtable, data);
-	//遍历
-	printf("遍历如下:\n");
-	TraverseHashTable(pHashtable);
-
-
+	int num = SearchTimesByNodeInHash(pHashtable, data);
+	if(num==0){
+		printf("没有找到该用户信息！\n");
+		printf("按回车返回！\n");
+	}
+	else printf("登录次数：%d", num);
+	
 }

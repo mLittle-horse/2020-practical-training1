@@ -115,10 +115,12 @@ typedef struct HashTable{
 
 extern HashTable hashtable;
 
+void CreateHashTable(PHashTable hash);
 void InitHashTable(PHashTable hash, int TableSize, int base);
 void InsertHashNode(PHashTable hash, SDataType data);
 void TraverseHashTable(PHashTable hash);
 void DeleteHashNode(PHashTable hash, SDataType data);
+int SearchTimesByNodeInHash(PHashTable hash, SDataType data);
 
 
 //辅助函数

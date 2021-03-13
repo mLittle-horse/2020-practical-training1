@@ -11,6 +11,33 @@ void InitHashTable(PHashTable hash, int TableSize,int base){
 	hash->base = base;
 }
 
+void CreateHashTable(PHashTable hash){
+	FILE *fp;
+	fp = fopen("C:\\mxp\\GitHub_repo\\2020-practical-training1\\in.txt", "r");
+	if(fp==NULL){
+		printf("提示：文件不存在！无法录入信息\n");
+		printf("请按回车键返回.");
+		getchar();getchar();
+		return ;
+	}
+	else{
+		SDataType data;
+		char message[LENGTH << 1], name[LENGTH];
+		scanf("%s", message);
+		int index = 0;
+		for (int i = 0; i < strlen(message);i++){
+			if(message[i]==',')
+				break;
+			name[index++] = message[i];
+		}
+		name[index] = '\0';
+		strcpy(data.name, name);
+		data.totalCount = 1;
+		InsertHashNode(hash, data);
+	}
+}
+
+
 //在一个单链表从前到后的时候顺便看看有没有相同的key值，如果有的话，将totalCount累加
 void InsertHashNode(PHashTable hash, SDataType data){
 	char key[LENGTH];
@@ -76,6 +103,20 @@ void DeleteHashNode(PHashTable hash, SDataType data){
 	printf("没有找到该用户信息!\n");
 	printf("按回车返回！\n");
 	getchar();
+}
+
+int SearchTimesByNodeInHash(PHashTable hash, SDataType data){
+	if(hash==NULL)
+		return 0;
+	int h = CalcHash(data.name, hash->base, hash->TableSize);
+	PHashNode p = hash->head[h];
+	while(p){
+		if(strcmp(data.name,p->_data.name)==0){
+			return p->_data.totalCount;
+		}
+		p = p->next;
+	}
+	return 0;
 }
 
 //算出关键字通过散列函数后计算得到的哈希值

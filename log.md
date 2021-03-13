@@ -1218,3 +1218,38 @@ void DeleteHashNode(PHashTable hash, SDataType data){
 ##### 测试结果
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313124612.png" alt="image-20210313124611113" style="zoom:67%;" />
+
+
+
+#### 2021-3-13	16:44:03		update hashtable.c--new SearchTimesByNodeInHash
+
+##### 代码
+
+```c
+int SearchTimesByNodeInHash(PHashTable hash, SDataType data){
+	if(hash==NULL)
+		return 0;
+	int h = CalcHash(data.name, hash->base, hash->TableSize);
+	PHashNode p = hash->head[h];
+	while(p){
+		if(strcmp(data.name,p->_data.name)==0){
+			return p->_data.totalCount;
+		}
+		p = p->next;
+	}
+	return 0;
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313164426.png" alt="image-20210313164422291" style="zoom:67%;" />
+
+
+
+
+
+
+
