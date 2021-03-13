@@ -12,7 +12,7 @@ int main(){
 	// TestLink();
 	// TestBST();
 	// TESTAVL();
-	TestHash();
+	// TestHash();
 	return 0;
 }
 
@@ -103,15 +103,20 @@ void TESTAVL(){
 void TestHash(){
 	PHashTable pHashtable = &hashtable;
 	InitHashTable(pHashtable, 1000, 31);
-	//////////插入数据
+	
 	SDataType data;
 	char name[LENGTH];
-	printf("请输入用户名：\n");
-	while(~scanf("%s",name)){
-		strcpy(data.name, name);
-		data.totalCount = 1;
-		InsertHashNode(pHashtable, data);
-	}
+
+	//从文件读入数据创建哈希表
+	CreateHashTable(pHashtable);
+
+	//////////插入数据
+	// printf("请输入用户名：\n");
+	// while(~scanf("%s",name)){
+	// 	strcpy(data.name, name);
+	// 	data.totalCount = 1;
+	// 	InsertHashNode(pHashtable, data);
+	// }
 
 	//////////遍历
 	printf("遍历如下:\n");

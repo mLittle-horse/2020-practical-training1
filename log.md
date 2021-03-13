@@ -1249,7 +1249,48 @@ int SearchTimesByNodeInHash(PHashTable hash, SDataType data){
 
 
 
+#### 2021-3-13	16:54:32		update hashtable.c--new CreateHashTable
 
+##### 代码
+
+```c
+//从文件读入数据创建哈希表
+void CreateHashTable(PHashTable hash){
+	FILE *fp;
+	fp = fopen("C:\\mxp\\GitHub_repo\\2020-practical-training1\\in.txt", "r");
+	if(fp==NULL){
+		printf("提示：文件不存在！无法录入信息\n");
+		printf("请按回车键返回.");
+		getchar();getchar();
+		return ;
+	}
+	else while(!feof(fp)){
+		SDataType data;
+		char message[LENGTH << 1], name[LENGTH];
+		fscanf(fp,"%s", message);
+		int index = 0;
+		for (int i = 0; i < strlen(message);i++){
+			if(message[i]==',')
+				break;
+			name[index++] = message[i];
+		}
+		name[index] = '\0';
+		strcpy(data.name, name);
+		data.totalCount = 1;
+		InsertHashNode(hash, data);
+	}
+	fclose(fp);
+	printf("信息读取成功！\n");
+	printf("按回车继续！\n");
+	getchar();
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313165451.png" alt="image-20210313165450411" style="zoom:67%;" />
 
 
 
