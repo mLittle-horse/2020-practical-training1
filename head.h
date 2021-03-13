@@ -118,6 +118,8 @@ extern HashTable hashtable;
 void InitHashTable(PHashTable hash, int TableSize, int base);
 void InsertHashNode(PHashTable hash, SDataType data);
 void TraverseHashTable(PHashTable hash);
+void DeleteHashNode(PHashTable hash, SDataType data);
+
 
 //辅助函数
 int CalcHash(char key[], int base, int TableSize);

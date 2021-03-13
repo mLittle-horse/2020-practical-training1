@@ -1174,3 +1174,47 @@ void TraverseHashTable(PHashTable hash){
 ##### 测试结果
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313121732.png" alt="image-20210313121731036" style="zoom:67%;" />
+
+
+
+#### 2021-3-13	12:45:53		update hashtable.c--new DeleteHashNode
+
+这个删除结点没啥难的，就还是先计算出其哈希值，找到桶，然后在这个单链表里顺着搜下去，找到相同的值就删掉返回即可
+
+##### 代码
+
+```c
+void DeleteHashNode(PHashTable hash, SDataType data){
+	int h = CalcHash(data.name, hash->base, hash->TableSize);
+	PHashNode p = hash->head[h],pre;
+	while(p){
+		if(strcmp(data.name,p->_data.name)==0){
+			printf("删除结点：%s,%d\n", p->_data.name, p->_data.totalCount);
+			if(p==hash->head[h]&&p==hash->tail[h]){
+				hash->head[h] = hash->tail[h] = NULL;
+			}
+			else if(p==hash->head[h]){
+				hash->head[h] = hash->head[h]->next;
+			}
+			else{
+				pre->next = p->next;
+				if(p==hash->tail[h])
+					hash->tail[h] = pre;
+			}
+			free(p);
+			return;
+		}
+		pre = p;
+		p = p->next;
+	}
+	printf("没有找到该用户信息!\n");
+	printf("按回车返回！\n");
+	getchar();
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313124612.png" alt="image-20210313124611113" style="zoom:67%;" />

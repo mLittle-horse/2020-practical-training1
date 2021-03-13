@@ -50,6 +50,34 @@ void TraverseHashTable(PHashTable hash){
 	}
 }
 
+void DeleteHashNode(PHashTable hash, SDataType data){
+	int h = CalcHash(data.name, hash->base, hash->TableSize);
+	PHashNode p = hash->head[h],pre;
+	while(p){
+		if(strcmp(data.name,p->_data.name)==0){
+			printf("删除结点：%s,%d\n", p->_data.name, p->_data.totalCount);
+			if(p==hash->head[h]&&p==hash->tail[h]){
+				hash->head[h] = hash->tail[h] = NULL;
+			}
+			else if(p==hash->head[h]){
+				hash->head[h] = hash->head[h]->next;
+			}
+			else{
+				pre->next = p->next;
+				if(p==hash->tail[h])
+					hash->tail[h] = pre;
+			}
+			free(p);
+			return;
+		}
+		pre = p;
+		p = p->next;
+	}
+	printf("没有找到该用户信息!\n");
+	printf("按回车返回！\n");
+	getchar();
+}
+
 //算出关键字通过散列函数后计算得到的哈希值
 int CalcHash(char key[],int base,int TableSize){
 	int len = strlen(key);

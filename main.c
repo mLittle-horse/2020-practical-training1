@@ -103,7 +103,7 @@ void TESTAVL(){
 void TestHash(){
 	PHashTable pHashtable = &hashtable;
 	InitHashTable(pHashtable, 1000, 31);
-	//插入数据
+	//////////插入数据
 	SDataType data;
 	char name[LENGTH];
 	printf("请输入用户名：\n");
@@ -113,7 +113,18 @@ void TestHash(){
 		InsertHashNode(pHashtable, data);
 	}
 
+	//////////遍历
+	printf("遍历如下:\n");
+	TraverseHashTable(pHashtable);
+
+	//////////删除
+	printf("请输入待删除的用户名：\n");
+	scanf("%s", name);
+	strcpy(data.name, name);
+	DeleteHashNode(pHashtable, data);
 	//遍历
 	printf("遍历如下:\n");
 	TraverseHashTable(pHashtable);
+
+
 }
