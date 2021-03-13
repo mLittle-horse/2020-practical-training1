@@ -6,7 +6,7 @@
 
 void ReadFromFile(){
 	FILE *fp;
-	fp = fopen("C:\\mxp\\GitHub_repo\\2020-practical-training1\\in.txt","r");
+	fp = fopen("in.txt","r");
 	if(fp==NULL){
 		printf("提示：文件不存在！无法录入信息\n");
 		printf("请按回车键返回.");
