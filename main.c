@@ -6,11 +6,13 @@
 void TestLink();
 void TestBST();
 void TESTAVL();
+void TestHash();
 
 int main(){
 	// TestLink();
 	// TestBST();
-	TESTAVL();
+	// TESTAVL();
+	TestHash();
 	return 0;
 }
 
@@ -96,5 +98,22 @@ void TESTAVL(){
 		printf("按回车返回！\n");
 	}
 	else printf("登录次数：%d", num);
+}
 
+void TestHash(){
+	PHashTable pHashtable = &hashtable;
+	InitHashTable(pHashtable, 1000, 31);
+	//插入数据
+	SDataType data;
+	char name[LENGTH];
+	printf("请输入用户名：\n");
+	while(~scanf("%s",name)){
+		strcpy(data.name, name);
+		data.totalCount = 1;
+		InsertHashNode(pHashtable, data);
+	}
+
+	//遍历
+	printf("遍历如下:\n");
+	TraverseHashTable(pHashtable);
 }

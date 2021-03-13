@@ -99,4 +99,28 @@ void InOrderTraverseAVL(PAVLTreeNode T);
 void PostOrderTraverseAVL(PAVLTreeNode T);
 
 
+
+////////////////////////////////////////哈希表//////////////////////////////////////////////////////
+
+typedef struct HashNode{
+	SDataType _data;
+	struct HashNode *next;
+} HashNode, *PHashNode;
+
+typedef struct HashTable{
+	PHashNode head[1000];
+	PHashNode tail[1000];
+	int TableSize,base;
+} HashTable,*PHashTable;
+
+extern HashTable hashtable;
+
+void InitHashTable(PHashTable hash, int TableSize, int base);
+void InsertHashNode(PHashTable hash, SDataType data);
+void TraverseHashTable(PHashTable hash);
+
+//辅助函数
+int CalcHash(char key[], int base, int TableSize);
+long long FastPow(long long a, long long p, long long mod);
+
 #endif

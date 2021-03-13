@@ -1108,3 +1108,69 @@ int SearchTimesByNameInAVL(PAVLTreeNode T,SDataType data){
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313095712.png" alt="image-20210313095711956" style="zoom:67%;" />
 
+
+
+#### 2021-3-13	12:17:03		new hashtable.c--new InitHashTable、new InsertHashNode、new TraverseHashTable
+
+其实就是以取模出来的哈希值作为桶的下标，然后每个桶本质是一个单链表。我们要添加的时候，就从该桶的第一个找到最后一个，然后遇到相同用户名的就将登陆次数累加。但是我这里对于每一个桶不仅维护了head，还维护了tail，这是在最后如果扫过一遍发现这个桶之前并没有key值的时候往末尾添加数据时用的。
+
+有一个优化，就是在计算哈希值的时候，频繁的用到了取模，对于库函数pow无法支持取模操作，可能会有溢出。而如果利用循环来完成乘法效率较低，所以这里添加了一个FastPow快速幂的算法，可以实现快速算出某个数的幂次并且在计算的过程中取模。
+
+##### 代码
+
+```c
+//初始化哈希表的大小和base
+void InitHashTable(PHashTable hash, int TableSize,int base){
+	hash->TableSize = TableSize;
+	hash->base = base;
+}
+```
+
+```c
+//在一个单链表从前到后的时候顺便看看有没有相同的key值，如果有的话，将totalCount累加
+void InsertHashNode(PHashTable hash, SDataType data){
+	char key[LENGTH];
+	strcpy(key, data.name);
+	int h = CalcHash(key, hash->base, hash->TableSize);
+	//插入节点在h地址的链表后
+	PHashNode p = (PHashNode)malloc(sizeof(HashNode));
+	p->_data = data;
+	PHashNode now = hash->head[h];
+	if(hash->head[h]==NULL){
+		hash->head[h] = hash->tail[h] = p;
+		p->next = NULL;
+	}
+	else{
+		while(now){
+			if(strcmp(now->_data.name,data.name)==0){
+				now->_data.totalCount += data.totalCount;
+				return;
+			}
+			now = now->next;
+		}
+		//说明没有找到相同key值的，在末尾添加即可；记得顺便修改tail的值
+		hash->tail[h]->next = p;
+		hash->tail[h] = p;
+		p->next = NULL;
+	}
+}
+```
+
+```c
+//遍历哈希表，从小桶开始
+void TraverseHashTable(PHashTable hash){
+	for (int i = 0; i < hash->TableSize;i++){
+		PHashNode p = hash->head[i];
+		while(p){
+			printf("%s,%d\n",p->_data.name,p->_data.totalCount);
+			p = p->next;
+		}
+	}
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313121732.png" alt="image-20210313121731036" style="zoom:67%;" />
