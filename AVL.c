@@ -226,4 +226,18 @@ PAVLTreeNode DeleteAVLTreeNode(PAVLTreeNode now, SDataType data){
 	return now;   //如果经过删除操作后仍然平衡，直接返回即可
 }
 
-
+//也是递归的方式来查找
+int SearchTimesByNameInAVL(PAVLTreeNode T,SDataType data){
+	if(T==NULL)
+		return 0;
+	else{
+		if(strcmp(data.name,T->_data.name)==0){
+			return T->_data.totalCount;
+		}
+		else if(strcmp(data.name,T->_data.name)<0){
+			return SearchTimesByNameInAVL(T->_Pleft, data);
+		}
+		else
+			return SearchTimesByNameInAVL(T->_Pright, data);
+	}
+}

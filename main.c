@@ -86,4 +86,15 @@ void TESTAVL(){
 	printf("删除后先序遍历结果如下：\n");
 	PreOrderTraverseAVL(ATree._pRoot);
 
+	//查找
+	printf("请输入想要查询登录次数的用户名：");
+	scanf("%s", name);
+	strcpy(data.name, name);
+	int num = SearchTimesByNameInAVL(ATree._pRoot, data);
+	if(num==0){
+		printf("没有找到该用户信息！\n");
+		printf("按回车返回！\n");
+	}
+	else printf("登录次数：%d", num);
+
 }

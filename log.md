@@ -1076,9 +1076,35 @@ PAVLTreeNode DeleteAVLTreeNode(PAVLTreeNode now, SDataType data){
 
 
 
+#### 2021-3-13	09:55:43		update AVL.c--new SearchTimesByNameInAVL
+
+这个地方的搜索功能实现的和BST里的方法不太一样，这里是递归的去搜索的，BST里面就是单纯的顺着树往下搜，是用while循环实现的
+
+##### 代码
+
+```c
+//也是递归的方式来查找
+int SearchTimesByNameInAVL(PAVLTreeNode T,SDataType data){
+	if(T==NULL)
+		return 0;
+	else{
+		if(strcmp(data.name,T->_data.name)==0){
+			return T->_data.totalCount;
+		}
+		else if(strcmp(data.name,T->_data.name)<0){
+			return SearchTimesByNameInAVL(T->_Pleft, data);
+		}
+		else
+			return SearchTimesByNameInAVL(T->_Pright, data);
+	}
+}
+```
 
 
 
+##### 测试结果
 
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313095605.png" alt="image-20210313095603442" style="zoom:67%;" />
 
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210313095712.png" alt="image-20210313095711956" style="zoom:67%;" />
 

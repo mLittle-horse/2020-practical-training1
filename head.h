@@ -83,6 +83,7 @@ extern AVL ATree;
 void CreateAVLTree();
 PAVLTreeNode InsertAVLTreeNode(PAVLTreeNode now, SDataType data);
 PAVLTreeNode DeleteAVLTreeNode(PAVLTreeNode now, SDataType data);
+int SearchTimesByNameInAVL(PAVLTreeNode T,SDataType data);   //对人名的查找，显示登录次数信息
 
 //辅助函数
 PAVLTreeNode CreatAVLNode(SDataType data);
