@@ -36,6 +36,8 @@ void RadixSort();   //基排序
 int compare(const void *pa, const void *pb);   //qsort的比较函数
 void QSort();   //修改快速排序--使用标准库中的qsort()函数
 
+void createFiles();
+
 ////////////////////////////////////////二叉搜索树BST//////////////////////////////////////////////////////
 
 typedef struct TreeNode

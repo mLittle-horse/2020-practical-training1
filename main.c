@@ -13,10 +13,11 @@ char wholeName[100005][LENGTH];
 int totalCount = 0;
 
 int main(){
-	TestLink();
+	// TestLink();
 	// TestBST();
-	TESTAVL();
+	// TESTAVL();
 	// TestHash();
+	createFiles();
 	return 0;
 }
 

@@ -1432,7 +1432,50 @@ void TestHash(){
 
 
 
+#### 2021-3-15	07:37:12		new createFiles.c--1/8、1/4、1/2、1 of original data
+
+##### 代码
+
+```c
+void createFiles(){
+	FILE *fp,*fp_out;
+	fp=fopen("user_login.txt","r");
+	// fp_out=fopen("divide 2 data.txt","w");
+	// fp_out = fopen("divide 4 data.txt", "w");
+	fp_out = fopen("divide 8 data.txt", "w");
+
+	if(fp==NULL||fp_out==NULL){
+		printf("error!\n");
+		return ;
+	}
+	int tot=1e5;
+	// int cnt_2 = tot / 2;
+	// int cnt_4 = tot / 4;
+	int cnt_8 = tot / 8;
+	int i=0;
+	while(!feof(fp)){
+		char message[60];
+		fscanf(fp,"%s",message);
+		i++;
+		if(i<=cnt_8){
+			
+			if(i!=cnt_8) fprintf(fp_out,"%s\n",message);
+			else fprintf(fp_out,"%s",message);
+		}
+		else break;
+	}
+	fclose(fp);
+	fclose(fp_out);
+}
+```
+
+用这个函数成功的将原数据分成1/8、1/4、1/2、1倍数，并自动写入我们需要的文件里，divide 2 data.txt 	
+
+divide 4 data.txt	divide 8 data.txt。
 
 
 
+##### 测试过程
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315075018.png" alt="image-20210315075016575" style="zoom:50%;" />
 
