@@ -14,8 +14,8 @@ void InitHashTable(PHashTable hash, int TableSize,int base){
 //从文件读入数据创建哈希表
 void CreateHashTable(PHashTable hash){
 	FILE *fp;
-//	fp = fopen("C:\\mxp\\GitHub_repo\\2020-practical-training1\\in.txt", "r");
-	fp = fopen("in.txt", "r");
+//	fp = fopen("in.txt", "r");
+	fp = fopen("user_login.txt", "r");
 	if(fp==NULL){
 		printf("提示：文件不存在！无法录入信息\n");
 		printf("请按回车键返回.");
@@ -38,7 +38,7 @@ void CreateHashTable(PHashTable hash){
 		InsertHashNode(hash, data);
 	}
 	fclose(fp);
-	printf("信息读取成功！\n");
+	printf("信息读取成功！哈希表建立成功！\n");
 	printf("按回车继续！\n");
 	getchar();
 }

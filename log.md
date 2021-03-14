@@ -1326,7 +1326,81 @@ void test1(){
 
 
 
+#### 2021-3-14	20:13:07		Compare the performance of AVL tree lookup and hash table lookup
 
+这里为了比较性能，就将数据量全部都用了，前面我实现的方法都是只截取了几条来测试程序的正确与否。这里将所给的所有数据都读入用于建树和建哈希表。为了防止手工输入查找名字的误差，将所有的名字全部都查一遍。
+
+为了统计出所有的名字，我们先用链表建立出来，将所有的不同的用户名存在一个全局变量数组里面，这是属于额外的时间。
+
+接着用二分查找和散列查找分别查找所有的用户名，统计总用时。
+
+##### 代码
+
+```c
+//测AVL的二分查询时间
+void TESTAVL(){
+	clock_t start, end;
+	double Total_time;
+	///////////平衡二叉树/////////////
+	start = clock();
+	CreateAVLTree();
+
+	SDataType data;
+
+	//查询所有用户名以测时间
+	for (int i = 1; i < totalCount;i++){
+		strcpy(data.name, wholeName[i]);
+		int num = SearchTimesByNameInAVL(ATree._pRoot, data);
+		printf("%s ---", data.name);
+		if(num==0){
+			printf("没有找到该用户信息！\n");
+		}
+		else printf("登录次数：%d\n", num);
+	}
+	end = clock();
+	Total_time = (double)(end - start) / CLOCKS_PER_SEC;
+	printf("Total_time:%f seconds\n", Total_time);
+}
+```
+
+
+
+```c
+//测哈希表的查询时间
+void TestHash(){
+	clock_t start, end;
+	double Total_time;
+	///////////哈希表/////////////
+	start = clock();
+
+	PHashTable pHashtable = &hashtable;
+	InitHashTable(pHashtable, 1000, 31);
+	
+	SDataType data;
+    
+	//查询所有用户名以测时间
+	for (int i = 1; i < totalCount;i++){
+		strcpy(data.name, wholeName[i]);
+		int num = SearchTimesByNodeInHash(pHashtable, data);
+		printf("%s ---", data.name);
+		if(num==0){
+			printf("没有找到该用户信息！\n");
+		}
+		else printf("登录次数：%d\n", num);
+	}
+	end = clock();
+	Total_time = (double)(end - start) / CLOCKS_PER_SEC;
+	printf("Total_time:%f seconds\n", Total_time);
+}
+```
+
+
+
+##### 测试结果
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210314231850.png" alt="image-20210314231825426" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210314232551.png" alt="image-20210314232550473" style="zoom:67%;" />
 
 
 
