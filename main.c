@@ -15,8 +15,8 @@ int totalCount = 0;
 int main(){
 	TestLink();
 	// TestBST();
-	// TESTAVL();
-	TestHash();
+	TESTAVL();
+	// TestHash();
 	return 0;
 }
 
@@ -89,7 +89,7 @@ void TESTAVL(){
 	clock_t start, end;
 	double Total_time;
 	///////////平衡二叉树/////////////
-	start = clock();
+	
 	CreateAVLTree();
 
 	SDataType data;
@@ -123,6 +123,7 @@ void TESTAVL(){
 	// else printf("登录次数：%d", num);
 
 	//查询所有用户名以测时间
+	start = clock();
 	for (int i = 1; i < totalCount;i++){
 		strcpy(data.name, wholeName[i]);
 		int num = SearchTimesByNameInAVL(ATree._pRoot, data);
@@ -141,7 +142,7 @@ void TestHash(){
 	clock_t start, end;
 	double Total_time;
 	///////////哈希表/////////////
-	start = clock();
+	
 
 	PHashTable pHashtable = &hashtable;
 	InitHashTable(pHashtable, 1000, 31);
@@ -185,6 +186,7 @@ void TestHash(){
 	// else printf("登录次数：%d\n", num);
 
 	//查询所有用户名以测时间
+	start = clock();
 	for (int i = 1; i < totalCount;i++){
 		strcpy(data.name, wholeName[i]);
 		int num = SearchTimesByNodeInHash(pHashtable, data);
