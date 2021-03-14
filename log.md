@@ -1294,3 +1294,55 @@ void CreateHashTable(PHashTable hash){
 
 
 
+
+
+#### 2021-3-14	19:57:19		Learn to calculate the running time of a program
+
+clock_t是一个长整形数。在time.h文件中，还定义了一个常量CLOCKS_PER_SEC，它用来表示一秒钟会有多少个时钟计时单元
+
+注意这个start和end都是clock_t类型的，最后在计算时间的时候一定要注意转成double类型的算，不然会丢失掉很多精度的。而且一定要除以CLOCKS_PER_SEC，这样除之后求出来的是运行的秒数。
+
+主要思想就是把程序执行要测试的代码之前的时间段保存下来，再记录一下测试程序执行后的时间，用程序总执行时间减去程序执行要测试代码段之前的执行时间的时间得到程序执行要测试代码的时间。
+
+##### 代码
+
+```c
+#include<time.h>
+void test1(){
+	clock_t start,end;
+	double Total_time;
+	start=clock();
+	int i;
+	for(i=1;i<=100000;i++){
+		printf("%d\n",i);
+	}
+	end=clock();
+	Total_time=(double)(end-start)/CLOCKS_PER_SEC;
+	printf("%f second\n",Total_time);
+} 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
