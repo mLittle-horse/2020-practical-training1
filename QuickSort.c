@@ -3,6 +3,10 @@
 #include "head.h"
 
 void QuickSort(){
+	time_t start, stop;
+	double Total_time;
+	start = clock();
+	
 	PNode now,p;
 	now=head;
 	while(now){
@@ -17,5 +21,10 @@ void QuickSort(){
 		}
 		now=now->next;
 	}
+	stop = clock();
+
 	printf("快速排序完成！\n");
+
+	Total_time = (double)(stop - start) / CLOCKS_PER_SEC;
+	printf("Total_time:%f seconds\n", Total_time);
 }

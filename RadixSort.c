@@ -9,6 +9,10 @@ int cnt[10];
 int maxBit();  //计算totalCount的最大位数
 
 void RadixSort(){
+	time_t start, stop;
+	double Total_time;
+	start = clock();
+
 	array_size=0;
 	PNode p=head;
 	while(p){  //将链表里的元素转到数组里 
@@ -50,7 +54,13 @@ void RadixSort(){
 	while(array_size){
 		InsertLinkEnd(arr[array_size--]);
 	}
+	stop = clock();
+
 	printf("基排序完成！\n");
+
+	Total_time = (double)(stop - start) / CLOCKS_PER_SEC;
+	printf("Total_time:%f seconds\n", Total_time);
+	
 }
 
 int maxBit(){

@@ -1,0 +1,16 @@
+一倍数据
+
+1.冒泡排序完成！
+Total_time:0.013000 seconds
+
+2.快速排序完成！
+Total_time:0.003000 seconds
+
+3.堆排序完成！
+Total_time:0.001000 seconds
+
+4.基排序完成！
+Total_time:0.000000 seconds
+
+5.改进版快速排序完成！
+Total_time:0.000000 seconds

@@ -1479,3 +1479,40 @@ divide 4 data.txt	divide 8 data.txt。
 
 <img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315075018.png" alt="image-20210315075016575" style="zoom:50%;" />
 
+
+
+
+
+#### 2021-3-15	08:06:01		compare the time of the four sorts
+
+对于计算出的运行时间，我们将测试结果存到一个文件中（time.txt），以便之后比较。
+
+##### 测试结果
+
+###### 一倍数据
+
+****
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315084000.png" alt="image-20210315083959606" style="zoom: 67%;" />
+
+​		**冒泡排序**
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315080656.png" alt="image-20210315080621664" style="zoom: 50%;" />
+
+​		**快速排序**
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315082020.png" alt="image-20210315082018658" style="zoom: 50%;" />
+
+​		**堆排序**
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315082637.png" alt="image-20210315082635684" style="zoom:50%;" />
+
+​		**基排序**
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315083434.png" alt="image-20210315083433149" style="zoom: 50%;" />
+
+
+
+​		**改写版的快速排序（使用qsort的）**
+
+<img src="https://cdn.jsdelivr.net/gh/mLittle-horse/PicStore/img/20210315083843.png" alt="image-20210315083842252" style="zoom:50%;" />

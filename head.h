@@ -1,8 +1,11 @@
 #ifndef __HEAD_H__
 #define __HEAD_H__
 
+#include<time.h>
+
 #define LENGTH 30
 #define LEN sizeof(Node)
+
 
 typedef struct User_login{
 	char name[LENGTH];

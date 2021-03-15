@@ -13,11 +13,11 @@ char wholeName[100005][LENGTH];
 int totalCount = 0;
 
 int main(){
-	// TestLink();
+	TestLink();
 	// TestBST();
 	// TESTAVL();
 	// TestHash();
-	createFiles();
+	// createFiles();
 	return 0;
 }
 
@@ -35,12 +35,13 @@ void TestLink(){
 	// WriteToFile();
 
 	///////////////////////////将所有的名字整合到wholeName数组中///////////////////////////
-	PNode p = head;
-	totalCount = 0;
-	while(p){
-		strcpy(wholeName[++totalCount], p->data.name);
-		p = p->next;
-	}
+	// PNode p = head;
+	// totalCount = 0;
+	// while(p){
+	// 	strcpy(wholeName[++totalCount], p->data.name);
+	// 	p = p->next;
+	// }
+
 	//遍历一下数组
 	// printf("index:%d\n", index);
 	// for (int i = 1; i <= index;i++){
@@ -50,12 +51,13 @@ void TestLink(){
 
 
 	/////////排序//////////
-	//	BubbleSort();
-	//	QuickSort();
-	//	HeapSort();
-	//	RadixSort();
+		// BubbleSort();
+		// QuickSort();
+		// HeapSort();
+		// RadixSort();
 
-	//	QSort();
+		QSort();
+
 	//	Display();
 }
 

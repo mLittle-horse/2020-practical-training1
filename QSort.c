@@ -7,6 +7,10 @@ PNode brr[100005];
 int brr_size = 0;
 
 void QSort(){
+	time_t start, stop;
+	double Total_time;
+	start = clock();
+
 	PNode p=head;
 	while(p){
 		brr[brr_size++] = p;
@@ -17,7 +21,12 @@ void QSort(){
 	while(--brr_size>=0){
 		InsertLinkEnd(brr[brr_size]);
 	}
+	stop = clock();
+
 	printf("改进版快速排序完成！\n");
+
+	Total_time = (double)(stop - start) / CLOCKS_PER_SEC;
+	printf("Total_time:%f seconds\n", Total_time);
 }
 
 /**

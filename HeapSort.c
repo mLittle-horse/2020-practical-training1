@@ -10,6 +10,10 @@ void insert(PNode p);  //向堆中插入元素
 PNode del();  //从堆中删除元素并返回
 
 void HeapSort(){
+	time_t start, stop;
+	double Total_time;
+	start = clock();
+
 	PNode p = head;
 	while(p){
 		insert(p);
@@ -19,7 +23,12 @@ void HeapSort(){
 	while(heap_size){
 		InsertLinkEnd(del());
 	}
+	stop = clock();
+
 	printf("堆排序完成！\n");
+
+	Total_time = (double)(stop - start) / CLOCKS_PER_SEC;
+	printf("Total_time:%f seconds\n", Total_time);
 }
 
 void insert(PNode p){

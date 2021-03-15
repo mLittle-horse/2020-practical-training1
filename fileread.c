@@ -6,8 +6,11 @@
 
 void ReadFromFile(){
 	FILE *fp;
-//	fp = fopen("in.txt","r");
+	// fp = fopen("in.txt","r");
 	fp = fopen("user_login.txt", "r");
+	// fp = fopen("divide 2 data.txt", "r");
+	// fp = fopen("divide 4 data.txt", "r");
+	// fp = fopen("divide 8 data.txt", "r");
 	if(fp==NULL){
 		printf("提示：文件不存在！无法录入信息\n");
 		printf("请按回车键返回.");
